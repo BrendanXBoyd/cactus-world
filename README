@@ -1,0 +1,41 @@
+Brendan Boyd  CSCI5229  Final Project
+
+Draws a car in a desert scene. Compile with 'make' and run with 'final'.
+The files CSCIx229.h, errcheck.c, fatal.c, loadtexbmp.c, object.c, print.c, and
+project.c were created by Willem Schreuder.  The files shadow.frag, shadow.vert,
+and makefile were modified from files created by Willem Schreuder.
+
+Bragging points:
+ *  Shadows!  Shadows from the overhead light are drawn using a shadowmap shader
+  modified from Willem Schreuder's.  The modifications to the shader were made
+  to allow the car's headlights to still work with the shader activated.
+ *  The ground is drawn using a textured DEM.  The DEM was generated using a
+  combination of exponential and sinusoidal functions and exported from MATLAB.
+  The MATLAB code was created from scratch using my own formulas and algorithms.
+  The DEM's normals are calculated using cross products.  A display list is used
+  to extract the vertices, calculate the normals, and draw the ground.
+ *  The cacti are randomly generated with a random number and size of arms.  A
+  display list is used to randomly generate all of the cacti at once.  The arms
+  of the cactus are a continuous curve on the outside.  Additionally, when
+  generating the cactus locations, care is taken to put them at the proper
+  height and not have them on the road.
+ *  The car's headlights use spotlight lighting and can be toggled on/off.  When
+  the lights are on, the face of the headlight object lights up.  Significantly,
+  the headlights still work with the shadow map shader.
+ *  The road's shape can be changed using the number keys.  The car will follow
+  whatever shape the road is and will continually point in the direction of the
+  road.  The road's curve is generated from a collection of sinusoidal functions
+  to guarantee smoothness, differentiability, and periodicity.
+
+Key Bindings:
+  m/M         Toggle movement
+  h/H         Toggle car headlights
+  numbers     Change road shape
+  L/R arrows  Move car forward and backward
+  U/D arrows  Move sun (time) forward and backward
+  F1          Regenerate cactus locations (sometimes you have to hold it down)
+  x/X         Toggle axes
+  wasd/mouse  Change view angle
+  PgDn/PgUp   Zoom in and out
+  r/R         Reset view angle
+  ESC         Exit
